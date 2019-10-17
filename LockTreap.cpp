@@ -186,8 +186,11 @@ void insert (treap& t, treap toInsert)
 
 int find (treap& t, const int key, int& priority)
 {
+	std::lock_guard<std::recursive_mutex> lg(m);
+
 	if (t != nullptr)
 	{
+
 		if (key == t->key)
 		{
 			priority = t->priority;
